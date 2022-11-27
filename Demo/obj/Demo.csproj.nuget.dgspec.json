@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phamd\\source\\repos\\Demo\\Demo.csproj": {}
+    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phamd\\source\\repos\\Demo\\Demo.csproj": {
+    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phamd\\source\\repos\\Demo\\Demo.csproj",
+        "projectUniqueName": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj",
         "projectName": "Demo",
-        "projectPath": "C:\\Users\\phamd\\source\\repos\\Demo\\Demo.csproj",
+        "projectPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj",
         "packagesPath": "C:\\Users\\phamd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phamd\\source\\repos\\Demo\\obj\\",
+        "outputPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\phamd\\AppData\\Roaming\\NuGet\\NuGet.Config",
