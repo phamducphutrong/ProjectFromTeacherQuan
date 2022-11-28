@@ -22,5 +22,9 @@ namespace Demo.Controllers
         {
             return View();
         }
+        public IActionResult EditTemplate()
+        {
+            return View();
+        }
     }
 }
