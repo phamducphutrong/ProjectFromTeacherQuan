@@ -51,11 +51,23 @@
                         <tbody>
                             @{
                                 var id = 1;
+                                var document_id = "";
                             }
                             @foreach (var record in Model)
                             {
                                 <tr>
                                     <td id="@(id)" class="d-none">@record.document_id</td>
+                                    <script>
+                                        function display(id) {
+                                            let id_value = document.getElementById(id).textContent;
+                                            let document_id = document.getElementById("document-id");
+                                            document_id.value = id_value;
+                                            let book_number = document.getElementById("book-number");
+                                            book_number.value = "@record.book_number";
+                                            let document_type = document.getElementById("document-type");
+                                            
+                                        }
+                                    </script>
                                     <td onclick='display(@(id));'>@record.document_name</td>
                                     <td>@record.document_type</td>
                                     <td>@record.last_fix phút trước</td>
@@ -154,10 +166,3 @@
     </div>
 </div>
 
-<script>
-    function display(id) {
-        let id_value = document.getElementById(id).textContent;
-        let document_id = document.getElementById("document-id");
-        document_id.value = id_value;
-    }
-</script>
