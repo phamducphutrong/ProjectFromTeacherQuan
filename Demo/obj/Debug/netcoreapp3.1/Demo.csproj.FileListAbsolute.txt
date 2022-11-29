@@ -1065,3 +1065,4 @@ C:\Users\admin\source\repos\newProject\Demo\obj\Debug\netcoreapp3.1\Demo.csproj.
 C:\Users\admin\source\repos\newProject\Demo\obj\Debug\netcoreapp3.1\Demo.dll
 C:\Users\admin\source\repos\newProject\Demo\obj\Debug\netcoreapp3.1\Demo.pdb
 C:\Users\admin\source\repos\newProject\Demo\obj\Debug\netcoreapp3.1\Demo.genruntimeconfig.cache
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\Demo\obj\Debug\netcoreapp3.1\Razor\Views\Homepage\EditTemplate.cshtml.g.cs

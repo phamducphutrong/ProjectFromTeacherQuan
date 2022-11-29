@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\newProject\\Demo\\Demo.csproj": {}
+    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\newProject\\Demo\\Demo.csproj": {
+    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\newProject\\Demo\\Demo.csproj",
+        "projectUniqueName": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj",
         "projectName": "Demo",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\newProject\\Demo\\Demo.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\newProject\\Demo\\obj\\",
+        "projectPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\Demo.csproj",
+        "packagesPath": "C:\\Users\\phamd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\Demo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\phamd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

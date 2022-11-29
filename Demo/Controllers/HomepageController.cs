@@ -23,7 +23,16 @@ namespace Demo.Controllers
         [Route("choosingtemplate")]
         public IActionResult ChoosingTemplate()
         {
-            return View();
+            List<Template> templates = new List<Template>()
+            {
+                new Template() { url = "https://wallpapercave.com/dwp1x/wp4033162.jpg", name = "Template 1"},
+                new Template() { url = "https://wallpapercave.com/dwp1x/wp4033170.jpg", name = "Template 2"},
+                new Template() { url = "https://wallpapercave.com/dwp1x/wp4033182.jpg", name = "Template 3"},
+                new Template() { url = "https://getwallpapers.com/wallpaper/full/8/5/9/184657.jpg", name = "Template 4"},
+                new Template() { url = "https://getwallpapers.com/wallpaper/full/6/6/7/184805.jpg", name = "Template 5"},
+                new Template() { url = "https://getwallpapers.com/wallpaper/full/e/5/b/184912.jpg", name = "Template 6"},
+            };
+            return View(templates);
         }
         public IActionResult EditTemplate()
         {

@@ -1,8 +1,5 @@
 ﻿@model List<Record>
 <div class="row">
-    
-		
-
     <div class="col-md-2 pt-3">
         <div class="dropdown">
             <button type="button" class="btn btn-primary dropdown-toggle container-fluid ml-2" data-toggle="dropdown">Lưu trữ</button>
@@ -67,8 +64,6 @@
                                             document_id.value = id_value;
                                             let book_number = document.getElementById("book-number");
                                             book_number.value = "@record.book_number";
-                                            let document_type = document.getElementById("document-type");
-                                            
                                         }
                                     </script>
                                     <td onclick='display(@(id));'>@record.document_name</td>
@@ -168,5 +163,5 @@
         </div>
     </div>
 </div>
-		
+
 
