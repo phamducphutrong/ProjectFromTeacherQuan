@@ -54,15 +54,16 @@
                 </button>
                 <p class="text-center">Template 6</p>
             </div>
+
             <div class="col-12"><hr /></div>
             <div class="col-12"><p class="float-right">More themes</p></div>
             <div class="col-12">
                 <div class="input-group ">
                     <div class="form-outline">
-                        <input type="search" id="form1" class="form-control" placeholder="Search"/>  
+                        <input type="search" id="output" class="form-control" placeholder="Search"/>  
                     </div>
-                    <button type="button" class="btn btn-primary">
-                        <i class="bi bi-search"></i>
+                    <button type="button" class="btn btn-primary" onclick="runSpeechRecognition()">
+                        <i class="bi bi-search"></i> <span id="action"></span></p>
                     </button>
                 </div>
             </div>
@@ -92,3 +93,36 @@
         </div>
     </div>
 </div>
+<script>
+			/* JS comes here */
+		    function runSpeechRecognition() {
+		        // get output div reference
+		        var output = document.getElementById("output");
+		        // get action element reference
+		        var action = document.getElementById("action");
+                // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>listening, please speak...</small>";
+                };
+                
+                recognition.onspeechend = function() {
+                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                    recognition.stop();
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+                    output.innerHTML = ""+ transcript + "";
+                    output.classList.remove("hide");
+                };
+              
+                 // start recognition
+                 recognition.start();
+	        }
+		</script>
