@@ -49,31 +49,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @{
-                                var id = 1;
-                                var document_id = "";
-                            }
                             @foreach (var record in Model)
                             {
                                 <tr>
-                                    <td id="@(id)" class="d-none">@record.document_id</td>
-                                    <script>
-                                        function display(id) {
-                                            let id_value = document.getElementById(id).textContent;
-                                            let document_id = document.getElementById("document-id");
-                                            document_id.value = id_value;
-                                            let book_number = document.getElementById("book-number");
-                                            book_number.value = "@record.book_number";
-                                        }
-                                    </script>
-                                    <td onclick='display(@(id));'>@record.document_name</td>
-                                    <td>@record.document_type</td>
+                                    <form asp-controller="Homepage" asp-action="Index" asp-route-id="@record.id">
+                                    <td><input type="submit" value="@record.document_name" /></td>
+                                    </form>
+                                    <td>@record.Category.Name</td>
                                     <td>@record.last_fix phút trước</td>
                                     <td>@record.version</td>
                                     <td><a class="btn btn-primary btn-sm text-white">Mở</a></td>
                                     <td><a class="btn btn-danger btn-sm text-white">Xóa</a></td>
                                 </tr>
-                                id++;
                             }
                         </tbody>
                     </table>
@@ -118,42 +105,137 @@
                 <div class="row">
                     <div class="col-3 form-group">
                         <label for="document-id">Mã tài liệu:</label>
-                        <input type="text" class="form-control" id="document-id">
+                        @if (TempData["document_id"] != null)
+                        {
+                            <input type="text" class="form-control" id="document-id" value="@TempData["document_id"]">
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" id="document-id">
+                        }
                     </div>
                     <div class="col-3 form-group">
                         <label for="document-type">Loại tài liệu:</label>
-                        <select class="form-control" id="document-type">
-                            <option value=""></option>
-                            <option value="Nghị định">Nghị định</option>
-                            <option value="Quyết định">Quyết định</option>
-                            <option value="Thông báo">Thông báo</option>
-                            <option value="Thông tư">Thông tư</option>
-                        </select>
+                        @if (TempData["category_id"] == null)
+                        {
+                            <select class="form-control" id="document-type">
+                                <option value="0">Hãy chọn loại tài liệu</option>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            @*<select class="form-control" id="document-type">
+                        @{
+                        int temp_id;
+                        foreach (var category in ViewBag.Categories)
+                        {
+                        if (TempData["category_name"] == category.Name)
+                        {
+                        temp_id = category.Id;
+                        }
+                        <option value="temp_id">@TempData["category_name"]</option>
+                        break;
+                        }
+                        foreach (var category in ViewBag.Categories)
+                        {
+                        if (category.Id.ToString() != TempData["category_id"].ToString())
+                        {
+                        <option value="@category.Id">@category.Name</option>
+                        }
+                        }
+                        }
+                        </select>*@
+
+                            <select class="form-control" id="document-type">
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    if (category.Id.ToString() == TempData["category_id"].ToString())
+                                    {
+                                        <option value="@category.Id" selected>@category.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@category.Id">@category.Name</option>
+                                    }
+                                }
+                            </select>
+                        }
                     </div>
-                    <div class="col-3 form-group">
-                        <label for="signed-day">Ngày ký:</label>
-                        <input type="date" class="form-control" id="signed-day">
-                    </div>
+                    @if (TempData["signed_day"] == null)
+                    {
+                        <div class="col-3 form-group">
+                            <label for="signed-day">Ngày ký:</label>
+                            <input type="date" class="form-control" id="signed-day">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-3 form-group">
+                            <label for="signed-day">Ngày ký:</label>
+                            <input type="text" class="form-control" id="signed-day" value="@TempData["signed_day"].ToString()">
+                        </div>
+                    }
                     <div class="col-3 form-group">
                         <label for="book-number">Số sổ:</label>
-                        <input type="text" class="form-control" id="book-number">
+                        @if (TempData["book_number"] != null)
+                        {
+                            <input type="text" class="form-control" id="book-number" value="@TempData["book_number"]">
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" id="book-number">
+                        }
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6 form-group">
-                        <label for="receive">Kính gửi:</label>
-                        <textarea rows="3" class="form-control" id="receive"></textarea>
-                    </div>
-                    <div class="col-6 form-group">
-                        <label for="destination">Nơi nhận:</label>
-                        <textarea rows="3" class="form-control" id="destination"></textarea>
-                    </div>
+                    @if (TempData["dear_to"] == null)
+                    {
+                        <div class="col-6 form-group">
+                            <label for="dear_to">Kính gửi:</label>
+                            <textarea rows="3" class="form-control" id="dear_to"></textarea>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-6 form-group">
+                            <label for="dear_to">Kính gửi:</label>
+                            <textarea rows="3" class="form-control" id="dear_to">@TempData["dear_to"]</textarea>
+                        </div>
+                    }
+                    @if (TempData["destination"] == null)
+                    {
+                        <div class="col-6 form-group">
+                            <label for="destination">Nơi nhận:</label>
+                            <textarea rows="3" class="form-control" id="destination"></textarea>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-6 form-group">
+                            <label for="destination">Nơi nhận:</label>
+                            <textarea rows="3" class="form-control" id="destination">@TempData["destination"]</textarea>
+                        </div>
+                    }
                 </div>
                 <div>
-                    <div class="form-group">
-                        <label for="content">Nội dung:</label>
-                        <textarea rows="5" class="form-control" id="content"></textarea>
-                    </div>
+                    @if (TempData["content"] == null)
+                    {
+                        <div class="form-group">
+                            <label for="content">Nội dung:</label>
+                            <textarea rows="5" class="form-control" id="content"></textarea>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <label for="content">Nội dung:</label>
+                            <textarea rows="5" class="form-control" id="content">@TempData["content"]</textarea>
+                        </div>
+                    }
                 </div>
                 <div><button class="btn btn-primary float-right">Cập nhật</button></div>
             </div>

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProjectWeb.Models;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System;
 using ProjectWeb.Data;
 using System.Linq;
+using ProjectWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectWeb.Controllers
 {
@@ -16,10 +16,27 @@ namespace ProjectWeb.Controllers
         {
             this.context = context;
         }
+        [HttpGet]
         [Route("/")]
         public IActionResult Index()
         {
-            return View(context.Records.ToList());
+            ViewBag.Categories = context.Categories.ToList();
+            return View(context.Records.Include(category => category.Category).ToList());
+        }
+        [Route("/")]
+        [HttpPost]
+        public IActionResult Index(int id)
+        {
+            Record record = context.Records.Include(category => category.Category).FirstOrDefault(record => record.id== id);
+            TempData["document_id"] = record.document_id;
+            TempData["book_number"] = record.book_number;
+            TempData["category_id"] = record.Category.Id;
+            TempData["category_name"] = record.Category.Name;
+            TempData["dear_to"] = record.Dear_to;
+            TempData["destination"] = record.Destination;
+            TempData["content"] = record.Content;
+            TempData["signed_day"] = record.signed_day.ToShortDateString();
+            return RedirectToAction("Index");
         }
         [Route("choosingtemplate")]
         public IActionResult ChoosingTemplate()
