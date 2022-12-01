@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach (var record in Model)
                             {
-                                <tr>
+                                <tr id="@record.Category.Name">
                                     <form asp-controller="Homepage" asp-action="Index" asp-route-id="@record.id">
                                     <td><input type="submit" value="@record.document_name" style="border: none; background-color: white;" /></td>
                                     </form>
@@ -70,10 +70,15 @@
                         {
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="opradio">@category.Name
+                                    <input type="radio" class="form-check-input" onclick="filter('@category.Name')" name="opradio">@category.Name
                                 </label>
                             </div>
                         }
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" onclick="filter(1)" name="opradio">Tất cả
+                            </label>
+                        </div>
                     </div>
                     <div class="my-2">
                         <a asp-action="ChoosingTemplate" asp-controller="Homepage" class="btn btn-primary container-fluid">Thêm mới</a>
@@ -218,5 +223,30 @@
         </div>
     </div>
 </div>
+<script>
+    function filter(cate){
+        document.getElementById("Nghị định").classList.remove("hide");
+        document.getElementById("Thông báo").classList.remove("hide");
+        document.getElementById("Quyết định").classList.remove("hide");
+        if(cate === "Quyết định"){
+            document.getElementById("Nghị định").classList.add("hide");
+            document.getElementById("Thông báo").classList.add("hide");
+        }
+        else if(cate === "Nghị định")
+        {
+            document.getElementById("Quyết định").classList.add("hide");
+            document.getElementById("Thông báo").classList.add("hide");
+        }
+        else if (cate === "Thông báo"){
+            document.getElementById("Nghị định").classList.add("hide");
+            document.getElementById("Quyết định").classList.add("hide");
+        }
+        else{
+            document.getElementById("Nghị định").classList.remove("hide");
+            document.getElementById("Thông báo").classList.remove("hide");
+            document.getElementById("Quyết định").classList.remove("hide");
+        }
+    }
+</script>
 
 
