@@ -32,17 +32,16 @@ namespace ProjectWeb.Data
             builder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "Nghị định"},
                 new Category() { Id = 2, Name = "Quyết định" },
-                new Category() { Id = 3, Name = "Thông báo" },
-                new Category() { Id = 4, Name = "Thông tư" }
+                new Category() { Id = 3, Name = "Thông báo" }
                 );
         }
 
         private void SeedRecord(ModelBuilder builder)
         {
             builder.Entity<Record>().HasData(
-                new Record() { id = 1, document_name = "abcd", document_id = "2204", book_number = "b-123", version = "#123", last_fix = 15, tag = "Đất đai", CategoryId = 1, Dear_to = "Trưởng phòng nhân sự", Destination = "Phòng nhân sự", Content = "Đơn xin thôi việc", signed_day = new DateTime(2015, 02, 02)},
-                new Record() { id = 2, document_name = "efgh", document_id = "2205", book_number = "b-321", version = "#321", last_fix = 10, tag = "Đất đai", CategoryId = 2, Dear_to = "Trưởng ban quản lí sinh viên\n", Destination = "Phòng cộng tác sinh viên", Content = "Đơn xin nghỉ học", signed_day = new DateTime(2016, 02, 02) },
-                new Record() { id = 3, document_name = "jklm", document_id = "2206", book_number = "b-456", version = "#456", last_fix = 20, tag = "Sở giáo dục", CategoryId = 3, Dear_to = "Hiệu trưởng\nHiệu phó", Destination = "Trường đại học Greenwich", Content = "Đơn xin xác nhận học bổng", signed_day = new DateTime(2017, 02, 02) }
+                new Record() { id = 1, document_name = "Đơn xin thôi việc", document_id = "2204", book_number = "b-123", version = "#123", last_fix = 15, CategoryId = 1, Dear_to = "Trưởng phòng nhân sự", Destination = "Phòng nhân sự", Content = "Đơn xin thôi việc", signed_day = new DateTime(2015, 02, 02), Image = "image_1.jpg"},
+                new Record() { id = 2, document_name = "Đơn xin nghỉ học", document_id = "2205", book_number = "b-321", version = "#321", last_fix = 10, CategoryId = 2, Dear_to = "Giáo viên chủ nhiệm\nHiệu trưởng", Destination = "Trường đại học Greenwich", Content = "Đơn xin nghỉ học", signed_day = new DateTime(2016, 02, 02), Image = "image_2.jpg"},
+                new Record() { id = 3, document_name = "Đơn xin xác nhận học bổng", document_id = "2206", book_number = "b-456", version = "#456", last_fix = 20, CategoryId = 3, Dear_to = "Chủ tịch tỉnh\nChủ tịch xã\nBan lãnh đạo nhà trường", Destination = "Ủy ban nhân dân huyện\nTrường đại học Greenwich", Content = "Đơn xin xác nhận học bổng", signed_day = new DateTime(2017, 02, 02), Image = "image_3.png"}
                 );
         }
 

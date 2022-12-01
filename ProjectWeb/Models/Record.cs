@@ -17,5 +17,6 @@ namespace ProjectWeb.Models
         public string Dear_to { get; set; }
         public string Destination { get; set; }
         public string Content { get; set; }
+        public string Image { get; set; }
     }
 }

@@ -35,7 +35,14 @@ namespace ProjectWeb.Controllers
             TempData["dear_to"] = record.Dear_to;
             TempData["destination"] = record.Destination;
             TempData["content"] = record.Content;
+            TempData["image"] = record.Image;
             TempData["signed_day"] = record.signed_day.ToShortDateString();
+            return RedirectToAction("Index");
+        }
+        public IActionResult Delete(int id)
+        {
+            context.Records.Remove(context.Records.Find(id));
+            context.SaveChanges();
             return RedirectToAction("Index");
         }
         [Route("choosingtemplate")]

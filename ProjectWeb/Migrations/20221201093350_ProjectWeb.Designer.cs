@@ -10,7 +10,7 @@ using ProjectWeb.Data;
 namespace ProjectWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221201083900_ProjectWeb")]
+    [Migration("20221201093350_ProjectWeb")]
     partial class ProjectWeb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,11 +250,6 @@ namespace ProjectWeb.Migrations
                         {
                             Id = 3,
                             Name = "Thông báo"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Thông tư"
                         });
                 });
 
@@ -275,6 +270,9 @@ namespace ProjectWeb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Destination")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("book_number")
@@ -312,12 +310,12 @@ namespace ProjectWeb.Migrations
                             Content = "Đơn xin thôi việc",
                             Dear_to = "Trưởng phòng nhân sự",
                             Destination = "Phòng nhân sự",
+                            Image = "image_1.jpg",
                             book_number = "b-123",
                             document_id = "2204",
-                            document_name = "abcd",
+                            document_name = "Đơn xin thôi việc",
                             last_fix = 15,
                             signed_day = new DateTime(2015, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            tag = "Đất đai",
                             version = "#123"
                         },
                         new
@@ -325,15 +323,15 @@ namespace ProjectWeb.Migrations
                             id = 2,
                             CategoryId = 2,
                             Content = "Đơn xin nghỉ học",
-                            Dear_to = @"Trưởng ban quản lí sinh viên
-",
-                            Destination = "Phòng cộng tác sinh viên",
+                            Dear_to = @"Giáo viên chủ nhiệm
+Hiệu trưởng",
+                            Destination = "Trường đại học Greenwich",
+                            Image = "image_2.jpg",
                             book_number = "b-321",
                             document_id = "2205",
-                            document_name = "efgh",
+                            document_name = "Đơn xin nghỉ học",
                             last_fix = 10,
                             signed_day = new DateTime(2016, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            tag = "Đất đai",
                             version = "#321"
                         },
                         new
@@ -341,15 +339,17 @@ namespace ProjectWeb.Migrations
                             id = 3,
                             CategoryId = 3,
                             Content = "Đơn xin xác nhận học bổng",
-                            Dear_to = @"Hiệu trưởng
-Hiệu phó",
-                            Destination = "Trường đại học Greenwich",
+                            Dear_to = @"Chủ tịch tỉnh
+Chủ tịch xã
+Ban lãnh đạo nhà trường",
+                            Destination = @"Ủy ban nhân dân huyện
+Trường đại học Greenwich",
+                            Image = "image_3.png",
                             book_number = "b-456",
                             document_id = "2206",
-                            document_name = "jklm",
+                            document_name = "Đơn xin xác nhận học bổng",
                             last_fix = 20,
                             signed_day = new DateTime(2017, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            tag = "Sở giáo dục",
                             version = "#456"
                         });
                 });

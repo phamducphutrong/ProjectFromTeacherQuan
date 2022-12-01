@@ -199,7 +199,8 @@ namespace ProjectWeb.Migrations
                     CategoryId = table.Column<int>(nullable: false),
                     Dear_to = table.Column<string>(nullable: true),
                     Destination = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -219,8 +220,7 @@ namespace ProjectWeb.Migrations
                 {
                     { 1, "Nghị định" },
                     { 2, "Quyết định" },
-                    { 3, "Thông báo" },
-                    { 4, "Thông tư" }
+                    { 3, "Thông báo" }
                 });
 
             migrationBuilder.InsertData(
@@ -243,20 +243,22 @@ namespace ProjectWeb.Migrations
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
-                values: new object[] { 1, 1, "Đơn xin thôi việc", "Trưởng phòng nhân sự", "Phòng nhân sự", "b-123", "2204", "abcd", 15, new DateTime(2015, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Đất đai", "#123" });
+                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "Image", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
+                values: new object[] { 1, 1, "Đơn xin thôi việc", "Trưởng phòng nhân sự", "Phòng nhân sự", "image_1.jpg", "b-123", "2204", "Đơn xin thôi việc", 15, new DateTime(2015, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "#123" });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
-                values: new object[] { 2, 2, "Đơn xin nghỉ học", @"Trưởng ban quản lí sinh viên
-", "Phòng cộng tác sinh viên", "b-321", "2205", "efgh", 10, new DateTime(2016, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Đất đai", "#321" });
+                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "Image", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
+                values: new object[] { 2, 2, "Đơn xin nghỉ học", @"Giáo viên chủ nhiệm
+Hiệu trưởng", "Trường đại học Greenwich", "image_2.jpg", "b-321", "2205", "Đơn xin nghỉ học", 10, new DateTime(2016, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "#321" });
 
             migrationBuilder.InsertData(
                 table: "Records",
-                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
-                values: new object[] { 3, 3, "Đơn xin xác nhận học bổng", @"Hiệu trưởng
-Hiệu phó", "Trường đại học Greenwich", "b-456", "2206", "jklm", 20, new DateTime(2017, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sở giáo dục", "#456" });
+                columns: new[] { "id", "CategoryId", "Content", "Dear_to", "Destination", "Image", "book_number", "document_id", "document_name", "last_fix", "signed_day", "tag", "version" },
+                values: new object[] { 3, 3, "Đơn xin xác nhận học bổng", @"Chủ tịch tỉnh
+Chủ tịch xã
+Ban lãnh đạo nhà trường", @"Ủy ban nhân dân huyện
+Trường đại học Greenwich", "image_3.png", "b-456", "2206", "Đơn xin xác nhận học bổng", 20, new DateTime(2017, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "#456" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

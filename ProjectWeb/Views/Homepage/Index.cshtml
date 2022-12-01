@@ -20,8 +20,8 @@
     </div>
     <div class="col-md-10 pt-3">
         <div class="row">
-            <div class="col-7 border rounded mx-auto h-100">
-                <div name="nav" class="h-25">
+            <div class="col-7 border rounded mx-auto">
+                <div name="nav">
                     <ul class="nav">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Danh mục tài liệu</a>
@@ -37,8 +37,8 @@
                         </li>
                     </ul>
                 </div>
-                <div name="table" class="h-50">
-                    <table class="table text-center">
+                <div name="table">
+                    <table class="table text-center table-responsive">
                         <thead>
                             <tr>
                                 <th>Tài liệu</th>
@@ -53,13 +53,13 @@
                             {
                                 <tr>
                                     <form asp-controller="Homepage" asp-action="Index" asp-route-id="@record.id">
-                                    <td><input type="submit" value="@record.document_name" style="border: none; background-color: white;"/></td>
+                                    <td><input type="submit" value="@record.document_name" style="border: none; background-color: white;" /></td>
                                     </form>
                                     <td>@record.Category.Name</td>
                                     <td>@record.last_fix phút trước</td>
                                     <td>@record.version</td>
                                     <td><a class="btn btn-primary btn-sm text-white">Mở</a></td>
-                                    <td><a class="btn btn-danger btn-sm text-white">Xóa</a></td>
+                                    <td><a asp-controller="Homepage" asp-action="Delete" asp-route-id="@record.id" onclick="return confirm('Bạn có chắc chắn muốn xóa tài liệu này?')" class="btn btn-danger btn-sm text-white">Xóa</a></td>
                                 </tr>
                             }
                         </tbody>
@@ -80,9 +80,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 border rounded mx-auto mh-100" name="preview">
+            <div class="col-4 border rounded mx-auto" name="preview">
                 <h5 class="text-center">Xem trước tài liệu</h5>
-                <div class="bg-light d-flex justify-content-center align-items-center h-75">320x320</div>
+                @if (TempData["image"] == null)
+                {
+                    <div class="bg-light d-flex justify-content-center align-items-center">320x320</div>
+                }
+                else
+                {
+                    <div class="bg-light d-flex justify-content-center align-items-center"><img src="~/image/@TempData["image"]" width="100%" height="320px" /></div>
+                }
                 <button class="btn btn-primary container-fluid mt-3">Chỉnh sửa chi tiết</button>
             </div>
         </div>
