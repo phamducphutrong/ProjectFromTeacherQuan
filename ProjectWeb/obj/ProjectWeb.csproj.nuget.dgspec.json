@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {}
+    "C:\\Users\\admin\\Source\\Repos\\ProjectFromTeacher\\ProjectWeb\\ProjectWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {
+    "C:\\Users\\admin\\Source\\Repos\\ProjectFromTeacher\\ProjectWeb\\ProjectWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Source\\Repos\\ProjectFromTeacher\\ProjectWeb\\ProjectWeb.csproj",
         "projectName": "ProjectWeb",
-        "projectPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
-        "packagesPath": "C:\\Users\\phamd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Source\\Repos\\ProjectFromTeacher\\ProjectWeb\\ProjectWeb.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Source\\Repos\\ProjectFromTeacher\\ProjectWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phamd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,18 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "DocX": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.18.0, )"
+            },
+            "GleamTech.DocumentUltimate": {
+              "target": "Package",
+              "version": "[6.6.1, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.30, )"
@@ -84,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

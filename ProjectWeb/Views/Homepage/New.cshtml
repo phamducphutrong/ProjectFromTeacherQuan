@@ -1,0 +1,197 @@
+﻿@using GleamTech.AspNet.Core
+@using GleamTech.DocumentUltimate
+@using GleamTech.DocumentUltimate.AspNet
+@using GleamTech.DocumentUltimate.AspNet.UI
+
+<!DOCTYPE html>
+@{
+    var str = "";
+    if (ViewBag.fileName != null)
+    {
+        str = "" + ViewBag.fileName + "";
+    }
+    var documentViewer = new DocumentViewer
+            {
+                Width = 800,
+                Height = 800,
+                Document = str
+            };
+
+
+}
+<html>
+<head>
+    <title>Document Viewer</title>
+    @if (ViewBag.fileName != null)
+    {
+        @this.RenderHead(documentViewer)
+    }
+</head>
+<body onload="myFunction()">
+    <a asp-controller="Homepage" asp-action="Index">Home</a>
+    <a asp-controller="Homepage" asp-action="ChoosingTemplate">Template</a>
+    <form id="form" asp-controller="Homepage" asp-action="Create" method="post">
+        <div class="display-inline col-12 bg-info mb-5">
+            <input name="filename" type="text" value="ex3" />
+            <select name="font">
+                <option value="Times New Roman">Times new roman</option>
+                <option value="Arial">Arial</option>
+                <option value="Calibri">Calibri</option>
+            </select>
+            <input type="number" name="size" value="12" min="1" max="100" />
+        </div>
+        <div class="col-10 row mt-5" style="padding-left:17%;">
+            <div class="pl-1 col-12 row" style="background-color:grey;">
+                <div class="col-6 row mb-3">
+                    <div class="bg-light col-7 pt-2 mt-3 pb-1">
+                        <input class="mb-5" type="text" name="where" value="UBND Thành phố Hà Nội" />
+                        <br />
+                        Số: <input type="text" name="no" value="23/2022/QD" />
+                    </div>
+                </div>
+                <div class="col-6 row mb-3">
+                    <p class="font-weight-bold pt-2 mt-3">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
+                    <p class="font-weight-bold pl-5">
+                        Độc lập - Tự do - Hạnh phúc</>
+                        <div class="col-12 bg-light row">
+                            <input class="col-3 border-0" type="text" name="date1" value="Nghĩa Tâm " />
+                            ,ngày <input class="col border-0" type="text" name="date2" value="10" />
+                            ,tháng <input class="col border-0" type="text" name="date3" value="12" />
+                            ,năm<input class="col border-0" type="text" name="date4" value="2022" />
+                        </div>
+                </div>
+                <div class="col-12 mt-5" style="margin-left:35%;">
+                    <select class="ml-5 bg-light font-weight-bold mb-1" name="tit">
+                        <option value="QUYẾT ĐỊNH" selected>QUYẾT ĐỊNH</option>
+                        <option value="CÔNG VĂN">CÔNG VĂN</option>
+                        <option value="THÔNG BÁO">THÔNG BÁO</option>
+                        <option value="NGHỊ ĐỊNH">NGHỊ ĐỊNH</option>
+                    </select>
+                    <br />
+                    V/v:<input class="mb-5 col-6" type="text" value=" Bổ nhiệm kế toán" name="subTitle" />
+                    <br />
+                    <h5 class="mb-5">HỢP ĐỒNG THÀNH VIÊN</h5>
+                </div>
+                <div class="col-12 ml-4">
+                    <textarea class="col-11 font-italic" form="form" name="cancu">- Căn cứ vào...</textarea>
+                </div>
+                <div class="col-12 mt-2 mb-2" style="margin-left:40%;">
+                    <h5 class="mb-5">QUYẾT ĐỊNH</h5>
+                </div>
+                <div class="col-12 ml-4">
+                    <p class="font-weight-bold">Điều 1: Nay bổ nhiệm</p>
+                    Họ và tên: <input class="mr-5 mb-1" type="text" name="ten" value="NGUYỄN MẠNH TÙNG" />
+                    Giới tính: <select class="mb-1" name="gioitinh">
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                        <option>Khác</option>
+                    </select>
+                    <br />
+                    Sinh ngày: <input class="mr-5 pl-5 mb-1" type="date" name="ngaysinh" />
+                    Dân tộc: <input class="mr-3" name="dantoc" type="text" value="Tày" />
+                    Quốc tịch: <input class="" name="quoctich" type="text" value="Việt Nam" />
+                    <br />
+                    Số CCCD: <input name="cccd" class="ml-2 mb-1" type="text" value="012345678934" />
+                    <br />
+                    Ngày cấp: <input class="mr-5 pl-5 mb-1 ml-1" type="date" name="ngaycap" />
+                    Nơi cấp: <input class="mr-3" name="noicap" type="text" value="Yên Bái" />
+                    Ngày hết hạn: <input class="" name="hethan" type="date" />
+                    <br />
+                    <table class="border-0">
+                        <tr class="">
+                            <td>Địa chỉ thường trú:</td>
+                            <td class=""><input name="diachi" class="ml-2 mb-1" style="width:500px;" type="text" value="Nghĩa Tâm, Văn Chấn, Yên Bái" /></td>
+                        </tr>
+                        <tr>
+                            <td>Chỗ ở hiện tại:</td>
+                            <td><input name="hientai" class="ml-2 mb-1" style="width:500px;" type="text" value="55/21 Lê Văn Lương, Thanh Xuân, Hà Nội" /></td>
+                        </tr>
+                        <tr>
+                            <td>Điện thoại: </td>
+                            <td><input name="sdt" class="ml-2 mb-1" style="width:500px;" type="text" value="0962986803" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email: </td>
+                            <td><input name="email" class="ml-2 mb-1" style="width:500px;" type="email" value="abc@gmail.com" /></td>
+                        </tr>
+                        <tr>
+                            <td>Giữ chức vụ: </td>
+                            <td><input name="detail" class="ml-2 mb-1" style="width:500px;" type="text" value="Kế toán của UBND TP Hà Nội " />từ ngày ký quyết định.</td>
+                        </tr>
+                    </table>
+                    <span class="font-weight-bold">Điều 2: </span>
+                    Ông/bà: <input value="NGUYỄN MẠNH TÙNG" class="mb-1" type="text" /> có các nghĩa vụ như sau:
+                    <br />
+                    <textarea class="col-11 font-italic" form="form" name="contentnv">- Tuân thủ ...</textarea>
+                    <br />
+                    Và các quyền:
+                    <br />
+                    <textarea class="col-11 font-italic mt-1" form="form" name="contentquyen">- Được đóng bảo hiểm ...</textarea>
+                    <br />
+                    <span class="font-weight-bold">Điều 3: </span> Quyết định này có hiệu lực kể từ ngày ký.
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="col-12 mb-5 d-flex">
+                        <div class="col-6 mr-5">
+                            <span class="font-weight-bold">Nơi nhận </span>
+                            <br />
+                            <input type="text" style="width:400px;" name="noinhan" value="-  Các phòng ban và ông/bà Nguyễn Mạnh Tùng" />
+                        </div>
+                        <div class="col-6 ml-5">
+                            <input class="font-weight-bold" style="width:250px;" value="CHỦ TỊCH UBND TP HÀ NỘI" type="text" name="nguoiky" />
+                            <br />
+                            <span class="ml-5">(Ký và ghi rõ họ tên)</span>
+                            <br />
+                            <input class="mt-5" type="text" style="width:250px;" name="namenguoiky" value="Nguyễn Văn A" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @{
+            if (ViewBag.fileName != null)
+            {
+                <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal" id="pre2">Preview</button>
+            }
+            else
+            {
+                <input class="btn btn-info" type="submit" name="pre" value="Preview" id="pre1" />
+            }
+        }
+        <input class="btn btn-danger" type="submit" name="del" value="Xoa" />
+        <input class="btn btn-success" type="submit" name="save" value="Luu" />
+    </form>
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="margin-left:-250px;width:900px;">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewBag.fileName</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @this.RenderHead(documentViewer)
+                    @this.RenderBody(documentViewer)
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            document.getElementById("pre2").click();
+        }
+    </script>
+</body>
+</html>

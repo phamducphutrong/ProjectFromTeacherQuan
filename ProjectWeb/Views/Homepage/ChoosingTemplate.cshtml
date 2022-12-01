@@ -1,108 +1,4 @@
-﻿@*@model List<Template>
-
-<div class="row container-fluid">
-    <div class="col-1">
-        <div class="col-12">
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <i class="bi bi-house"></i>
-                <p>Home</p>
-            </div>
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <i class="bi bi-files"></i>
-                <p>New</p>
-            </div>
-            <div class="d-flex justify-content-center align-items-center w-100 h-100">
-                <i class="bi bi-folder"></i>
-                <p>Open</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-11">
-        <h5>Welcome</h5>
-        <div class="row">
-            @foreach (var template in Model)
-            {
-                <div class="col-2">
-                    <button data-toggle="modal" data-target="#showModal" class="w-100 border-0">
-                        <img src="@template.url" class="w-100" height="100px">
-                    </button>
-                    <p class="text-center">@template.name</p>
-                </div>
-            }
-            <div class="col-12"><hr /></div>
-            <div class="col-12"><p class="float-right">More themes</p></div>
-            <div class="col-12">
-                <div class="input-group ">
-                    <div class="form-outline">
-                        <input type="search" id="search" class="form-control" placeholder="Search" style="width:300px;" />
-                    </div>
-                    <button type="button" class="btn btn-primary" onclick="runSpeechRecognition()">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                    <span style="margin-left:20px; margin-top:5px;" id="action"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Button trigger modal -->
-<!-- Modal -->
-<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    /* JS comes here */
-    function runSpeechRecognition() {
-        // get output div reference
-        document.getElementById("search").setAttribute('value', "");
-        var output = document.getElementById("output");
-        // get action element reference
-        var action = document.getElementById("action");
-        var sea = document.getElementById("sea");
-        // new speech recognition object
-        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-        var recognition = new SpeechRecognition();
-
-        // This runs when the speech recognition service starts
-        recognition.onstart = function () {
-            action.innerHTML = "<span>Hãy nói....</span>";
-        };
-
-        recognition.onspeechend = function () {
-            action.innerHTML = "<span>Đã hoàn thành</span>";
-            recognition.stop();
-        }
-
-        // This runs when the speech recognition service returns result
-        recognition.onresult = function (event) {
-            var transcript = event.results[0][0].transcript;
-            var confidence = event.results[0][0].confidence;
-            document.getElementById("search").setAttribute('value', "" + transcript + "");
-        };
-
-        // start recognition
-        recognition.start();
-    }
-</script>*@
-
-
-@model List<Template>
+﻿@model List<Template>
 
 <div class="row container-fluid">
     <div class="col-1 mt-3">
@@ -261,7 +157,7 @@
                     </div>
                 </div>
                 <div class="modal-footer col-12">
-                    <button type="button" class="btn btn-success">Tạo mẫu</button>
+                    <a type="button" class="btn btn-success" asp-controller="Homepage" asp-action="New">Tạo mẫu</a>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                 </div>
             </div><!-- /.modal-content -->
@@ -276,37 +172,40 @@
     function runSpeechRecognition() {
         var audio = new Audio('js/speak.mp3');
         audio.play();
-        document.getElementById('search').value = '';
-        // get output div reference
-        var output = document.getElementById("output");
-        // get action element reference
-        var action = document.getElementById("action");
-        var sea = document.getElementById("sea");
-        // new speech recognition object
-        var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-        var recognition = new SpeechRecognition();
+        setTimeout(() => {
+            document.getElementById('search').value = '';
+            // get output div reference
+            var output = document.getElementById("output");
+            // get action element reference
+            var action = document.getElementById("action");
+            var sea = document.getElementById("sea");
+            // new speech recognition object
+            var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+            var recognition = new SpeechRecognition();
 
-        // This runs when the speech recognition service starts
-        recognition.onstart = function () {
-            action.innerHTML = "<span>Hãy nói....</span>";
-        };
+            // This runs when the speech recognition service starts
+            recognition.onstart = function () {
+                action.innerHTML = "<span>Hãy nói....</span>";
+            };
 
-        recognition.onspeechend = function () {
-            action.innerHTML = "<span>Đã hoàn thành</span>";
-            recognition.stop();
-        };
+            recognition.onspeechend = function () {
+                action.innerHTML = "<span>Đã hoàn thành</span>";
+                recognition.stop();
+            };
 
-        // This runs when the speech recognition service returns result
-        recognition.onresult = function (event) {
-            var transcript = event.results[0][0].transcript;
-            var confidence = event.results[0][0].confidence;
-            // document.getElementById("search").setAttribute('value', "" + transcript + "");
-            document.getElementById('search').value = "" + transcript + "";
-            search(1);
-        };
+            // This runs when the speech recognition service returns result
+            recognition.onresult = function (event) {
+                var transcript = event.results[0][0].transcript;
+                var confidence = event.results[0][0].confidence;
+                // document.getElementById("search").setAttribute('value', "" + transcript + "");
+                document.getElementById('search').value = "" + transcript + "";
+                search(1);
+            };
 
-        // start recognition
-        recognition.start();
+            // start recognition
+            recognition.start();
+        }, 1500);
+
     }
     function search(id) {
         document.getElementsByName("kethon")[0].classList.add("hide");
@@ -345,7 +244,12 @@
         }
         else {
             document.getElementById("message").classList.remove("hide");
-        }
+            var audio = new Audio('js/notfound.mp3');
+            audio.play();
+    @*  setTimeout(() => {
+
+                }, 5000);*@
+                 }
     }
     function showAll() {
         document.getElementById("default").classList.add("hide");
