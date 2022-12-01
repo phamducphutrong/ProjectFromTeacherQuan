@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                     <div>
-                        <table class="table text-center table-responsive">
+                        <table class="table text-center table-responsive" height="220px">
                             <thead>
                                 <tr>
                                     <th>Tài liệu</th>
@@ -65,7 +65,7 @@
                                 }
                             </tbody>
                         </table>
-                        <div>
+                        <div class="d-flex justify-content-center">
                             <ul class="pagination">
                                 @{
                                     int numberPage = ViewBag.NumberPage;
@@ -106,16 +106,18 @@
                     </div>
                 </div>
                 <div class="col-4 border rounded mx-auto" name="preview">
-                    <h5 class="text-center">Xem trước tài liệu</h5>
+                    <h5 class="text-center pt-3">Xem trước tài liệu</h5>
                     @if (TempData["image"] == null)
                     {
-                        <div class="bg-light d-flex justify-content-center align-items-center">320x320</div>
+                        <div class="bg-light d-flex justify-content-center align-items-center">
+                            <div class ="bg-light d-flex justify-content-center align-items-center" style="width: 100%; height: 320px;">320x320</div>
+                        </div>
                     }
                     else
                     {
                         <div class="bg-light d-flex justify-content-center align-items-center"><img src="~/image/@TempData["image"]" width="100%" height="320px" /></div>
                     }
-                    <button class="btn btn-primary container-fluid mt-3">Chỉnh sửa chi tiết</button>
+                    <button class="btn btn-primary container-fluid mt-4">Chỉnh sửa chi tiết</button>
                 </div>
             </div>
             <div class="row">

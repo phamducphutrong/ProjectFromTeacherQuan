@@ -40,9 +40,9 @@ namespace ProjectWeb.Data
         {
             builder.Entity<Record>().HasData(
                 new Record() { id = 1, document_name = "Đơn xin thôi việc", document_id = "2204", book_number = "b-123", version = "#123", last_fix = 15, CategoryId = 1, Dear_to = "Trưởng phòng nhân sự", Destination = "Phòng nhân sự", Content = "Đơn xin thôi việc", signed_day = new DateTime(2015, 02, 02), Image = "image_1.jpg"},
-                new Record() { id = 2, document_name = "Đơn xin nghỉ học", document_id = "2205", book_number = "b-321", version = "#321", last_fix = 10, CategoryId = 2, Dear_to = "Giáo viên chủ nhiệm\nHiệu trưởng", Destination = "Trường đại học Greenwich", Content = "Đơn xin nghỉ học", signed_day = new DateTime(2016, 02, 02), Image = "image_2.jpg"},
+                new Record() { id = 2, document_name = "Đơn xin giảm học phí", document_id = "2222", book_number = "b-789", version = "#789", last_fix = 25, CategoryId = 1, Dear_to = "Hiệu trưởng", Destination = "Trường đại học Greenwich", Content = "Miễn giảm học phí", signed_day = new DateTime(2019, 03, 04), Image = "image_4.jpg" },
                 new Record() { id = 3, document_name = "Đơn xin xác nhận học bổng", document_id = "2206", book_number = "b-456", version = "#456", last_fix = 20, CategoryId = 3, Dear_to = "Chủ tịch tỉnh\nChủ tịch xã\nBan lãnh đạo nhà trường", Destination = "Ủy ban nhân dân huyện\nTrường đại học Greenwich", Content = "Đơn xin xác nhận học bổng", signed_day = new DateTime(2017, 02, 02), Image = "image_3.png"},
-                new Record() { id = 4, document_name = "dabc", document_id = "2222", book_number = "b-789", version = "#789", last_fix = 25, CategoryId = 2, Dear_to = "Teacher", Destination = "Teacher Room", Content = "Hello", signed_day = new DateTime(2019, 03, 04), Image = ""}
+                new Record() { id = 4, document_name = "Đơn xin nghỉ học", document_id = "2205", book_number = "b-321", version = "#321", last_fix = 10, CategoryId = 2, Dear_to = "Giáo viên chủ nhiệm\nHiệu trưởng", Destination = "Trường đại học Greenwich", Content = "Đơn xin nghỉ học", signed_day = new DateTime(2016, 02, 02), Image = "image_2.jpg" }
                 );
         }
 
