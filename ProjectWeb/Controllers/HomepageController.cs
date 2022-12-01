@@ -24,10 +24,28 @@ namespace ProjectWeb.Controllers
         }
         [HttpGet]
         [Route("/")]
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
+            var data = context.Records.Include(record => record.Category).ToList();
+            if (page > 0)
+            {
+                page = page;
+            }
+            else if (page == null)
+            {
+                page = 1; //set page default = 1
+            }
+            int limit = 3; //display show 3 products
+            int start = (int)(page - 1) * limit;
+            int totalProducts = data.Count();
+            ViewBag.CurrentPage = page;
+            float total = (float)totalProducts;
+            float limit_number = (float)limit;
+            float numberPage = total / limit_number;
+            ViewBag.NumberPage = (int)(Math.Ceiling(numberPage));
             ViewBag.Categories = context.Categories.ToList();
-            return View(context.Records.Include(category => category.Category).ToList());
+            var dataProduct = data.OrderBy(record => record.id).Skip(start).Take(limit).ToList();
+            return View(dataProduct);
         }
         [Route("/")]
         [HttpPost]
@@ -43,6 +61,7 @@ namespace ProjectWeb.Controllers
             TempData["content"] = record.Content;
             TempData["image"] = record.Image;
             TempData["signed_day"] = record.signed_day.ToShortDateString();
+            TempData["id"] = record.id;
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int id)
@@ -191,6 +210,9 @@ namespace ProjectWeb.Controllers
                 ViewBag.fileName = "file/" + filename + ".docx";
                 if (save != null)
                 {
+                    var a = new Record() { document_name = tit + " " + subTitle, document_id = "2207", book_number = "b-321", version = "#321", last_fix = 10, CategoryId = 2, Dear_to = "Phòng ban", Destination = "Phòng ban và người được bổ nhiệm", Content = "Bổ nhiệm trở thành kế toán", signed_day = new DateTime(2016, 02, 02), Image = "image_2.jpg" };
+                    context.Records.Add(a);
+                    context.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 else return View("New");

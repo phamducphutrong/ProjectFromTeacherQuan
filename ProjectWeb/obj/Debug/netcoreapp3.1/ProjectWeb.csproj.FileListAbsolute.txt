@@ -386,8 +386,6 @@ C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\D
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
-C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\obj\Debug\netcoreapp3.1\ProjectWeb.Views.pdb
 C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\obj\Debug\netcoreapp3.1\ProjectWeb.csproj.CopyComplete
@@ -787,3 +785,11 @@ C:\Users\admin\Source\Repos\ProjectFromTeacher\ProjectWeb\bin\Debug\netcoreapp3.
 C:\Users\admin\Source\Repos\ProjectFromTeacher\ProjectWeb\bin\Debug\netcoreapp3.1\GleamTech.DocumentUltimate.dll
 C:\Users\admin\Source\Repos\ProjectFromTeacher\ProjectWeb\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 C:\Users\admin\Source\Repos\ProjectFromTeacher\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\DocumentFormat.OpenXml.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\Xceed.Document.NET.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\Xceed.Words.NET.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\GleamTech.Common.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\GleamTech.DocumentUltimate.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\phamd\OneDrive\Documents\GitHub\ProjectFromTeacherQuan\ProjectWeb\obj\Debug\netcoreapp3.1\Razor\Views\Homepage\New.cshtml.g.cs
