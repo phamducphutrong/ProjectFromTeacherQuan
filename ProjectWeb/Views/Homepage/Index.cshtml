@@ -53,7 +53,7 @@
                             {
                                 <tr>
                                     <form asp-controller="Homepage" asp-action="Index" asp-route-id="@record.id">
-                                    <td><input type="submit" value="@record.document_name" /></td>
+                                    <td><input type="submit" value="@record.document_name" style="border: none; background-color: white;"/></td>
                                     </form>
                                     <td>@record.Category.Name</td>
                                     <td>@record.last_fix phút trước</td>
@@ -65,27 +65,15 @@
                         </tbody>
                     </table>
                     <div>
-                        Loại tài liệu
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optradio">Quyết định
-                            </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optradio">Nghị định
-                            </label>
-                        </div>
-                        <div class="form-check-inline disabled">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optradio">Thông tư
-                            </label>
-                        </div>
-                        <div class="form-check-inline disabled">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optradio">Thông báo
-                            </label>
-                        </div>
+                        Loại tài liệu &nbsp;
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="opradio">@category.Name
+                                </label>
+                            </div>
+                        }
                     </div>
                     <div class="my-2">
                         <button class="btn btn-primary container-fluid">Thêm mới</button>
@@ -128,28 +116,6 @@
                         }
                         else
                         {
-                            @*<select class="form-control" id="document-type">
-                        @{
-                        int temp_id;
-                        foreach (var category in ViewBag.Categories)
-                        {
-                        if (TempData["category_name"] == category.Name)
-                        {
-                        temp_id = category.Id;
-                        }
-                        <option value="temp_id">@TempData["category_name"]</option>
-                        break;
-                        }
-                        foreach (var category in ViewBag.Categories)
-                        {
-                        if (category.Id.ToString() != TempData["category_id"].ToString())
-                        {
-                        <option value="@category.Id">@category.Name</option>
-                        }
-                        }
-                        }
-                        </select>*@
-
                             <select class="form-control" id="document-type">
                                 @foreach (var category in ViewBag.Categories)
                                 {
