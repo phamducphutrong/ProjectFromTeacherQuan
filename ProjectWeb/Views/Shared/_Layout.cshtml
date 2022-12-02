@@ -22,6 +22,14 @@
     </style>
 </head>
 <body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" asp-controller="Homepage" asp-action="Index">Homepage</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Homepage" asp-action="ChoosingTemplate">Choose template</a>
+        </li>
+    </ul>
     <main role="main">
         @RenderBody()
     </main>

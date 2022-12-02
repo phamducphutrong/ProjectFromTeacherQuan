@@ -54,7 +54,7 @@
                                 {
                                     <tr id="@record.Category.Name" class="@record.id">
                                         <form asp-controller="Homepage" asp-action="Index" asp-route-id="@record.id">
-                                        <td><input type="submit" value="@record.document_name" style="border: none; background-color: white;" /></td>
+                                        <td><input class="btn-link" type="submit" value="@record.document_name" style="border: none; background-color: white;" /></td>
                                         </form>
                                         <td>@record.Category.Name</td>
                                         <td>@record.last_fix phút trước</td>
