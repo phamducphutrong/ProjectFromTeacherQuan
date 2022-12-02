@@ -24,10 +24,11 @@ namespace ProjectWeb.Controllers
         }
         [HttpGet]
         [Route("/")]
-        public IActionResult Index(int? page)
+        public IActionResult Index(int? page, int? id)
         {
             var data = context.Records.Include(record => record.Category).ToList();
-            if (page > 0)
+            if (id != null && id > 3) page = 2;
+            else if (page > 0)
             {
                 page = page;
             }
@@ -51,7 +52,7 @@ namespace ProjectWeb.Controllers
         [HttpPost]
         public IActionResult Index(int id)
         {
-            Record record = context.Records.Include(record => record.Category).FirstOrDefault(record => record.id== id);
+            Record record = context.Records.Include(record => record.Category).FirstOrDefault(record => record.id == id);
             TempData["document_id"] = record.document_id;
             TempData["book_number"] = record.book_number;
             TempData["category_id"] = record.Category.Id;
@@ -62,7 +63,7 @@ namespace ProjectWeb.Controllers
             TempData["image"] = record.Image;
             TempData["signed_day"] = record.signed_day.ToShortDateString();
             TempData["id"] = record.id;
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new {@id = id});
         }
         public IActionResult Delete(int id)
         {
