@@ -46,7 +46,13 @@ namespace ProjectWeb.Controllers
             ViewBag.NumberPage = (int)(Math.Ceiling(numberPage));
             ViewBag.Categories = context.Categories.ToList();
             var dataProduct = data.OrderBy(record => record.id).Skip(start).Take(limit).ToList();
-            
+            int[] numberOfRecord = new int[3];
+            for (int i = 0; i < context.Categories.ToList().Count; i++)
+            {
+                var listRecord = from record in data where record.CategoryId == i + 1 select record;
+                numberOfRecord[i] = listRecord.Count();
+            }
+            ViewBag.numberOfRecord = numberOfRecord;
             return View(dataProduct);
         }
         [Route("/")]

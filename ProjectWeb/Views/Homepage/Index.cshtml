@@ -44,12 +44,13 @@
                             <th>Thẻ</th>
                             <th>Số lượng</th>
                         </tr>
+                        @{var number = 0;}
                         @foreach (var category in ViewBag.Categories)
                         {
+                            
                             <tr>
                                 <td>@category.Name</td>
-                                <td>
-                                </td>
+                                <td>@ViewBag.numberOfRecord[number++]</td>
                             </tr>
                         }
                     </table>
