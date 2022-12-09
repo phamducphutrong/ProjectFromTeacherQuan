@@ -105,26 +105,26 @@
     <div class="container">
         <div class="row">
             <form id="account" method="post" class="login_form">
-                <h2 id="account" method="post" class="form_title">Login Form</h2>
+                <h2 id="account" method="post" class="form_title">Đăng nhập</h2>
                 <div class="form-group">
-                    <input class="form-control" asp-for="Input.Email" placeholder="* Email address" style="animation:show 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);" />
+                    <input class="form-control" asp-for="Input.Email" placeholder="* Email" style="animation:show 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" asp-for="Input.Password" placeholder="* Password" style="animation:show 0.9s cubic-bezier(0.18, 0.89, 0.32, 1.28);" />
+                    <input class="form-control" asp-for="Input.Password" placeholder="* Mật khẩu" style="animation:show 0.9s cubic-bezier(0.18, 0.89, 0.32, 1.28);" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox" style="animationshow 0.5s ease-in;">
-                        <label><input asp-for="Input.RememberMe" style="animation:show 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);"> Remember me</label>
+                        <label><input asp-for="Input.RememberMe" style="animation:show 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);"> Ghi nhớ</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-default" style="animation:show 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);">Log in</button>
+                    <button type="submit" class="btn btn-default" style="animation:show 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);">Đăng nhập</button>
                 </div>
                 <div class="d-flex justify-content-center links">
-                    Don't have an account?
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign Up</a>
+                    Chưa có tài khoản?&nbsp;
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Đăng kí</a>
                 </div>
             </form>
         </div>
