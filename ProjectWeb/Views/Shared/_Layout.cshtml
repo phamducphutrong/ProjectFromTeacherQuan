@@ -22,21 +22,31 @@
     </style>
 </head>
 <body>
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" asp-controller="Homepage" asp-action="Index">Homepage</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-controller="Homepage" asp-action="ChoosingTemplate">Choose template</a>
-        </li>
-    </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Homepage" asp-action="Index">Văn bản hành chính</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Homepage" asp-action="Index">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Homepage" asp-action="ChoosingTemplate">Lựa chọn mẫu</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Homepage" asp-action="New">Sửa mẫu</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
     <main role="main">
         @RenderBody()
     </main>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/Homepage.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

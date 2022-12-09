@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectWeb.Models;
@@ -25,6 +27,47 @@ namespace ProjectWeb.Data
             SeedCategory(builder);
             SeedRecord(builder);
             SeedTemplate(builder);
+            SeedUser(builder);
+            SeedRole(builder);
+            SeedUserRole(builder);
+        }
+
+        private void SeedUser(ModelBuilder builder)
+        {
+            var customer = new IdentityUser
+            {
+                Id = "1",
+                UserName = "customer@gmail.com",
+                Email = "customer@gmail.com",
+                NormalizedUserName = "customer@gmail.com",
+                EmailConfirmed = true
+            };
+
+            var hasher = new PasswordHasher<IdentityUser>();
+
+            customer.PasswordHash = hasher.HashPassword(customer, "123456");
+            builder.Entity<IdentityUser>().HasData(customer);
+        }
+
+        private void SeedRole(ModelBuilder builder)
+        {
+            var customer = new IdentityRole
+            {
+                Id = "customer",
+                Name = "customer",
+                NormalizedName = "customer"
+            };
+            builder.Entity<IdentityRole>().HasData(customer);
+        }
+
+        private void SeedUserRole(ModelBuilder builder)
+        {
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    UserId = "1",
+                    RoleId = "customer"
+                });
         }
 
         private void SeedCategory(ModelBuilder builder)

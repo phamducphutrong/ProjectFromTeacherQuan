@@ -16,8 +16,6 @@
                 Height = 800,
                 Document = str
             };
-
-
 }
 <html>
 <head>
@@ -27,12 +25,10 @@
         @this.RenderHead(documentViewer)
     }
 </head>
-<body onload="myFunction()">
-    <a asp-controller="Homepage" asp-action="Index">Home</a>
-    <a asp-controller="Homepage" asp-action="ChoosingTemplate">Template</a>
+<body onload="myFunction()" style="background-color:gray;">
     <form id="form" asp-controller="Homepage" asp-action="Create" method="post">
-        <div class="display-inline col-12 bg-info mb-5">
-            <input name="filename" type="text" value="ex3" />
+        <div class="text-center bg-white mb-5">
+            <input name="filename" type="text" value="Tên tệp" />
             <select name="font">
                 <option value="Times New Roman">Times new roman</option>
                 <option value="Arial">Arial</option>
@@ -40,45 +36,47 @@
             </select>
             <input type="number" name="size" value="12" min="1" max="100" />
         </div>
-        <div class="col-10 row mt-5" style="padding-left:17%;">
-            <div class="pl-1 col-12 row" style="background-color:grey;">
-                <div class="col-6 row mb-3">
-                    <div class="bg-light col-7 pt-2 mt-3 pb-1">
-                        <input class="mb-5" type="text" name="where" value="UBND Thành phố Hà Nội" />
-                        <br />
+        <div class="d-flex justify-content-center align-items-center row">
+            <div class="col-10 row bg-white">
+                <div class="col-6 row mt-3">
+                    <div class="col-12 mb-5">
+                        <input type="text" name="where" value="UBND Thành phố Hà Nội" />
+                    </div>
+                    <div class="col-12">
                         Số: <input type="text" name="no" value="23/2022/QD" />
                     </div>
                 </div>
-                <div class="col-6 row mb-3">
-                    <p class="font-weight-bold pt-2 mt-3">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
-                    <p class="font-weight-bold pl-5">
-                        Độc lập - Tự do - Hạnh phúc</>
-                        <div class="col-12 bg-light row">
-                            <input class="col-3 border-0" type="text" name="date1" value="Nghĩa Tâm " />
-                            ,ngày <input class="col border-0" type="text" name="date2" value="10" />
-                            ,tháng <input class="col border-0" type="text" name="date3" value="12" />
-                            ,năm<input class="col border-0" type="text" name="date4" value="2022" />
-                        </div>
+                <div class="col-6 row mt-3">
+                    <div class="font-weight-bold col-12 text-center">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+                    <div class="font-weight-bold col-12 text-center">Độc lập - Tự do - Hạnh phúc</div>
+                    <div class="col-12 row d-flex justify-content-center align-items-center">
+                        <input class="col-3 border-0" type="text" name="date1" value="Nghĩa Tâm " />
+                        , ngày <input class="col border-0" type="text" name="date2" value="10" />
+                        , tháng <input class="col border-0" type="text" name="date3" value="12" />
+                        , năm<input class="col border-0" type="text" name="date4" value="2022" />
+                    </div>
                 </div>
-                <div class="col-12 mt-5" style="margin-left:35%;">
-                    <select class="ml-5 bg-light font-weight-bold mb-1" name="tit">
-                        <option value="QUYẾT ĐỊNH" selected>QUYẾT ĐỊNH</option>
-                        <option value="CÔNG VĂN">CÔNG VĂN</option>
-                        <option value="THÔNG BÁO">THÔNG BÁO</option>
-                        <option value="NGHỊ ĐỊNH">NGHỊ ĐỊNH</option>
-                    </select>
-                    <br />
-                    V/v:<input class="mb-5 col-6" type="text" value=" Bổ nhiệm kế toán" name="subTitle" />
-                    <br />
-                    <h5 class="mb-5">HỢP ĐỒNG THÀNH VIÊN</h5>
+                <div class="col-12 mt-5 row">
+                    <div class="col-12 text-center">
+                        <select class="font-weight-bold" name="tit">
+                            <option value="QUYẾT ĐỊNH" selected>QUYẾT ĐỊNH</option>
+                            <option value="CÔNG VĂN">CÔNG VĂN</option>
+                            <option value="THÔNG BÁO">THÔNG BÁO</option>
+                            <option value="NGHỊ ĐỊNH">NGHỊ ĐỊNH</option>
+                        </select>
+                    </div>
+                    <div class="col-12 text-center mb-5">
+                        V/v:<input type="text" value=" Bổ nhiệm kế toán " name="subTitle" />
+                    </div>
+                    <div class="col-12 text-center">
+                        <h5 class="mb-5">HỢP ĐỒNG THÀNH VIÊN</h5>
+                    </div>
                 </div>
-                <div class="col-12 ml-4">
-                    <textarea class="col-11 font-italic" form="form" name="cancu">- Căn cứ vào...</textarea>
+                <div class="col-12">
+                    <textarea class="col-12 font-italic" form="form" name="cancu">- Căn cứ vào...</textarea>
                 </div>
-                <div class="col-12 mt-2 mb-2" style="margin-left:40%;">
-                    <h5 class="mb-5">QUYẾT ĐỊNH</h5>
-                </div>
-                <div class="col-12 ml-4">
+                <h5 class="col-12 text-center mb-4">QUYẾT ĐỊNH</h5>
+                <div class="col-12">
                     <p class="font-weight-bold">Điều 1: Nay bổ nhiệm</p>
                     Họ và tên: <input class="mr-5 mb-1" type="text" name="ten" value="NGUYỄN MẠNH TÙNG" />
                     Giới tính: <select class="mb-1" name="gioitinh">
@@ -122,51 +120,52 @@
                     <span class="font-weight-bold">Điều 2: </span>
                     Ông/bà: <input value="NGUYỄN MẠNH TÙNG" class="mb-1" type="text" /> có các nghĩa vụ như sau:
                     <br />
-                    <textarea class="col-11 font-italic" form="form" name="contentnv">- Tuân thủ ...</textarea>
+                    <textarea class="col-12 font-italic" form="form" name="contentnv">- Tuân thủ ...</textarea>
                     <br />
                     Và các quyền:
                     <br />
-                    <textarea class="col-11 font-italic mt-1" form="form" name="contentquyen">- Được đóng bảo hiểm ...</textarea>
+                    <textarea class="col-12 font-italic" form="form" name="contentquyen">- Được đóng bảo hiểm ...</textarea>
                     <br />
                     <span class="font-weight-bold">Điều 3: </span> Quyết định này có hiệu lực kể từ ngày ký.
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div class="col-12 mb-5 d-flex">
-                        <div class="col-6 mr-5">
+                    <div class="col-12 row mb-5 mt-5">
+                        <div class="col-6">
                             <span class="font-weight-bold">Nơi nhận </span>
-                            <br />
-                            <input type="text" style="width:400px;" name="noinhan" value="-  Các phòng ban và ông/bà Nguyễn Mạnh Tùng" />
+                            <input type="text" class="col-8" name="noinhan" value="-  Các phòng ban và ông/bà Nguyễn Mạnh Tùng" />
                         </div>
-                        <div class="col-6 ml-5">
-                            <input class="font-weight-bold" style="width:250px;" value="CHỦ TỊCH UBND TP HÀ NỘI" type="text" name="nguoiky" />
-                            <br />
-                            <span class="ml-5">(Ký và ghi rõ họ tên)</span>
-                            <br />
-                            <input class="mt-5" type="text" style="width:250px;" name="namenguoiky" value="Nguyễn Văn A" />
+                        <div class="col-6 text-center row">
+                            <div class="col-12">
+                                <input class="font-weight-bold col-6" value="CHỦ TỊCH UBND TP HÀ NỘI" type="text" name="nguoiky" />
+                            </div>
+                            <div class="col-12">
+                                <span>(Ký và ghi rõ họ tên)</span>
+                            </div>
+                            <div class="col-12">
+                                <input class="mt-5" type="text" name="namenguoiky" value="Nguyễn Văn A" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        @{
-            if (ViewBag.fileName != null)
-            {
-                <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal" id="pre2">Preview</button>
+        <div class="d-flex justify-content-center align-items-center">
+            @{
+                if (ViewBag.fileName != null)
+                {
+                    <button class="btn btn-info" type="button" data-toggle="modal" data-target="#myModal" id="pre2">Xem trước</button>
+                }
+                else
+                {
+                    <input class="btn btn-info" type="submit" name="pre" value="Preview" id="pre1" />
+                }
             }
-            else
-            {
-                <input class="btn btn-info" type="submit" name="pre" value="Preview" id="pre1" />
-            }
-        }
-        <input class="btn btn-danger" type="submit" name="del" value="Xoa" />
-        <input class="btn btn-success" type="submit" name="save" value="Luu" />
+            <input class="btn btn-danger" type="submit" name="del" value="Xóa" />
+            <input class="btn btn-success" type="submit" name="save" value="Lưu" />
+        </div>
     </form>
     <!-- The Modal -->
     <div class="modal" id="myModal">
         <div class="modal-dialog">
-            <div class="modal-content" style="margin-left:-250px;width:900px;">
+            <div class="modal-content" style="margin-left:-200px;width:900px;">
 
                 <!-- Modal Header -->
                 <div class="modal-header">

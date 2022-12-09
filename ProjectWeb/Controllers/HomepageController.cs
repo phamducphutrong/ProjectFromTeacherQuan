@@ -46,6 +46,7 @@ namespace ProjectWeb.Controllers
             ViewBag.NumberPage = (int)(Math.Ceiling(numberPage));
             ViewBag.Categories = context.Categories.ToList();
             var dataProduct = data.OrderBy(record => record.id).Skip(start).Take(limit).ToList();
+            
             return View(dataProduct);
         }
         [Route("/")]
@@ -75,10 +76,6 @@ namespace ProjectWeb.Controllers
         public IActionResult ChoosingTemplate()
         {
             return View(context.Templates.ToList());
-        }
-        public IActionResult EditTemplate()
-        {
-            return View();
         }
         [Route("New")]
         public IActionResult New()
