@@ -12,6 +12,7 @@ using Xceed.Document.NET;
 using DocumentFormat.OpenXml.Drawing;
 using System.Reflection.Metadata;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectWeb.Controllers
 {
@@ -24,19 +25,21 @@ namespace ProjectWeb.Controllers
         }
         [HttpGet]
         [Route("/")]
+        [Authorize(Roles = "customer")]
         public IActionResult Index(int? page, int? id)
         {
             var data = context.Records.Include(record => record.Category).ToList();
-            if (id != null && id > 3) page = 2;
-            else if (page > 0)
+            int limit = 3; //display show 3 products
+            float page1;
+            if (id != null)
             {
-                page = page;
+                page1 = (float)id / limit;
+                page = (int)(Math.Ceiling(page1));
             }
             else if (page == null)
             {
                 page = 1; //set page default = 1
             }
-            int limit = 3; //display show 3 products
             int start = (int)(page - 1) * limit;
             int totalProducts = data.Count();
             ViewBag.CurrentPage = page;
@@ -46,7 +49,7 @@ namespace ProjectWeb.Controllers
             ViewBag.NumberPage = (int)(Math.Ceiling(numberPage));
             ViewBag.Categories = context.Categories.ToList();
             var dataProduct = data.OrderBy(record => record.id).Skip(start).Take(limit).ToList();
-            int[] numberOfRecord = new int[3];
+            int[] numberOfRecord = new int[context.Categories.ToList().Count];
             for (int i = 0; i < context.Categories.ToList().Count; i++)
             {
                 var listRecord = from record in data where record.CategoryId == i + 1 select record;
@@ -57,6 +60,7 @@ namespace ProjectWeb.Controllers
         }
         [Route("/")]
         [HttpPost]
+        [Authorize(Roles = "customer")]
         public IActionResult Index(int id)
         {
             Record record = context.Records.Include(record => record.Category).FirstOrDefault(record => record.id == id);
@@ -72,6 +76,7 @@ namespace ProjectWeb.Controllers
             TempData["id"] = record.id;
             return RedirectToAction("Index", new {@id = id});
         }
+        [Authorize(Roles = "customer")]
         public IActionResult Delete(int id)
         {
             context.Records.Remove(context.Records.Find(id));
@@ -79,17 +84,20 @@ namespace ProjectWeb.Controllers
             return RedirectToAction("Index");
         }
         [Route("choosingtemplate")]
+        [Authorize(Roles = "customer")]
         public IActionResult ChoosingTemplate()
         {
             return View(context.Templates.ToList());
         }
         [Route("New")]
+        [Authorize(Roles = "customer")]
         public IActionResult New()
         {
             return View();
         }
         [HttpPost]
         [Route("Create")]
+        [Authorize(Roles = "customer")]
         public IActionResult Create(string font, int size, string where, string no, string date1, string date2, string date3, string date4, string tit, string subTitle,
             string cancu, string ten, string gioitinh, string ngaysinh, string dantoc, string quoctich, string cccd, string ngaycap, string noicap, string hethan, string diachi,
             string hientai, string sdt, string email, string detail, string contentnv, string contentquyen, string noinhan, string nguoiky, string namenguoiky, string filename, string del, string save
