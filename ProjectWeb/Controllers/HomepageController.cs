@@ -1,36 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using ProjectWeb.Data;
-using System.Linq;
-using ProjectWeb.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
-using Xceed.Words.NET;
-using Xceed.Document.NET;
-using DocumentFormat.OpenXml.Drawing;
-using System.Reflection.Metadata;
+using Microsoft.Extensions.Logging;
+using ProjectWeb.Data;
+using ProjectWeb.Models;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace ProjectWeb.Controllers
 {
-    public class HomepageController : Controller
+    public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext context;
-        public HomepageController(ApplicationDbContext context)
+
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             this.context = context;
+            _logger = logger;
+
         }
         [HttpGet]
         [Route("/")]
-        [Authorize(Roles = "customer")]
-        public IActionResult Index(int? page, int? id)
+        public IActionResult Index(int? page, int? id, int? cate)
         {
             var data = context.Records.Include(record => record.Category).ToList();
             int limit = 3; //display show 3 products
             float page1;
+
             if (id != null)
             {
                 page1 = (float)id / limit;
@@ -40,8 +42,10 @@ namespace ProjectWeb.Controllers
             {
                 page = 1; //set page default = 1
             }
+
             int start = (int)(page - 1) * limit;
             int totalProducts = data.Count();
+
             ViewBag.CurrentPage = page;
             float total = (float)totalProducts;
             float limit_number = (float)limit;
@@ -50,6 +54,21 @@ namespace ProjectWeb.Controllers
             ViewBag.Categories = context.Categories.ToList();
             var dataProduct = data.OrderBy(record => record.id).Skip(start).Take(limit).ToList();
             int[] numberOfRecord = new int[context.Categories.ToList().Count];
+
+            if (cate != null)
+            {
+                if (cate == 1) ViewBag.cate = 0;
+                else if (cate == 2) ViewBag.cate = 4;
+                else if (cate == 3) ViewBag.cate = 3;
+
+                ViewBag.numberPage = 1;
+            }
+            else
+            {
+                ViewBag.cate = -1;
+            }
+
+
             for (int i = 0; i < context.Categories.ToList().Count; i++)
             {
                 var listRecord = from record in data where record.CategoryId == i + 1 select record;
@@ -60,7 +79,6 @@ namespace ProjectWeb.Controllers
         }
         [Route("/")]
         [HttpPost]
-        [Authorize(Roles = "customer")]
         public IActionResult Index(int id)
         {
             Record record = context.Records.Include(record => record.Category).FirstOrDefault(record => record.id == id);
@@ -74,9 +92,8 @@ namespace ProjectWeb.Controllers
             TempData["image"] = record.Image;
             TempData["signed_day"] = record.signed_day.ToShortDateString();
             TempData["id"] = record.id;
-            return RedirectToAction("Index", new {@id = id});
+            return RedirectToAction("Index", new { @id = id });
         }
-        [Authorize(Roles = "customer")]
         public IActionResult Delete(int id)
         {
             context.Records.Remove(context.Records.Find(id));
@@ -84,20 +101,18 @@ namespace ProjectWeb.Controllers
             return RedirectToAction("Index");
         }
         [Route("choosingtemplate")]
-        [Authorize(Roles = "customer")]
         public IActionResult ChoosingTemplate()
         {
             return View(context.Templates.ToList());
         }
         [Route("New")]
-        [Authorize(Roles = "customer")]
         public IActionResult New()
         {
             return View();
         }
+
         [HttpPost]
         [Route("Create")]
-        [Authorize(Roles = "customer")]
         public IActionResult Create(string font, int size, string where, string no, string date1, string date2, string date3, string date4, string tit, string subTitle,
             string cancu, string ten, string gioitinh, string ngaysinh, string dantoc, string quoctich, string cccd, string ngaycap, string noicap, string hethan, string diachi,
             string hientai, string sdt, string email, string detail, string contentnv, string contentquyen, string noinhan, string nguoiky, string namenguoiky, string filename, string del, string save
@@ -111,6 +126,11 @@ namespace ProjectWeb.Controllers
                 var c2 = content2.Count();
                 string[] content3 = contentquyen.Split("\n");
                 var c3 = content3.Count();
+                if (filename != null) filename = filename;
+                else
+                {
+                    filename = "No_Name";
+                }
 
                 var doc = DocX.Create("wwwroot/file/" + filename + ".docx");
 
@@ -220,6 +240,7 @@ namespace ProjectWeb.Controllers
                 format = doc.InsertParagraph(content).Font(new Xceed.Document.NET.Font(font)).FontSize(size);
                 doc.Save();
                 ViewBag.fileName = "file/" + filename + ".docx";
+                ViewBag.fullFileName = filename;
                 if (save != null)
                 {
                     var a = new Record() { document_name = tit + " " + subTitle, document_id = "2207", book_number = "b-321", version = "#321", last_fix = 10, CategoryId = 2, Dear_to = "Phòng ban", Destination = "Phòng ban và người được bổ nhiệm", Content = "Bổ nhiệm trở thành kế toán", signed_day = new DateTime(2016, 02, 02), Image = "image_2.jpg" };
@@ -233,6 +254,12 @@ namespace ProjectWeb.Controllers
             {
                 return View("New");
             }
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

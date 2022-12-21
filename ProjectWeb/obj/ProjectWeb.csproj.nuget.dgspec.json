@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {}
+    "C:\\Users\\phamd\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {
+    "C:\\Users\\phamd\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
+        "projectUniqueName": "C:\\Users\\phamd\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
         "projectName": "ProjectWeb",
-        "projectPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
+        "projectPath": "C:\\Users\\phamd\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\ProjectWeb.csproj",
         "packagesPath": "C:\\Users\\phamd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phamd\\OneDrive\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\obj\\",
+        "outputPath": "C:\\Users\\phamd\\Documents\\GitHub\\ProjectFromTeacherQuan\\ProjectWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\phamd\\AppData\\Roaming\\NuGet\\NuGet.Config",
